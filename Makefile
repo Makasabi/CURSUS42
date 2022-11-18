@@ -6,7 +6,7 @@
 #    By: mrony <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 11:30:05 by mrony             #+#    #+#              #
-#    Updated: 2022/11/18 14:51:02 by mrony            ###   ########.fr        #
+#    Updated: 2022/11/18 17:41:11 by mrony            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC =	ft_atoi.c \
 	ft_isascii.c \
 	ft_isdigit.c \
 	ft_isprint.c \
+	ft_itoa.c \
 	ft_memchr.c \
 	ft_memcmp.c \
 	ft_memcpy.c \
@@ -60,13 +61,12 @@ clean:
 	rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) ./a.out libft.h.gch
 
 re: clean all
 
 test: $(NAME)
-	$(CC) $(CFLAGS) -L./libft $(INC) main.c
-	
+	$(CC) $(CFLAGS)  main.c -L . -lft
 
 .PHONY:	all clean fclean re
 

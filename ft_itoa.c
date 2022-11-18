@@ -6,49 +6,59 @@
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 11:44:18 by mrony             #+#    #+#             */
-/*   Updated: 2022/11/18 14:12:30 by mrony            ###   ########.fr       */
+/*   Updated: 2022/11/18 17:38:04 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static long	ft_absolute(int n)
+{
+	long	nb;
+
+	nb = n;
+	if (nb < 0)
+		return (-nb);
+	return (nb);
+}
+
+static size_t	ft_len(int n)
+{
+	size_t	len;
+
+	len = 0;
+	if (n <= 0)
+		len++;
+	while (n != 0)
+	{
+		n = n / 10;
+		len ++;
+	}
+	return (len);
+}
+
 char	*ft_itoa(int n)
 {
 	char	*c;
-	char	neg;
-	size_t	len;
-	long	nbr;
+	int		len;
 
-	len = 0;
-	nbr = n;
-	if (n < 0)
-	{
-		len = len + 1;
-		neg = "-";
-		n = -n;
-	}
-	while (n > 0)
-	{
-		n = n / 10;
-		len++;		
-	}
-	printf("len :%ld\n", len);
-	c = malloc(sizeof(char)*(len +1));
+	len = ft_len(n);
+	c = malloc(sizeof(char) * (len + 1));
 	if (!c)
 		return (NULL);
-	while 
+	c[len--] = '\0';
+	if (n == 0)
+	{
+		c[0] = 48;
+		return (c);
+	}
+	if (n < 0)
+		c[0] = '-';
+	while (n != 0)
+	{
+		c[len] = 48 + ft_absolute(n % 10);
+		n = n / 10;
+		len--;
+	}
 	return (c);
-}
-
-int	main(void)
-{
-	int	n = 124536789;
-	char	*c;
-
-	printf("\nft_atoi\n");
-	printf("Int to convert in char: %d\n", n);
-	c = ft_itoa(n);
-	printf("Converted char: %s\n", c);
-	free(c);
-	return (0);
 }
