@@ -6,7 +6,7 @@
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 10:33:03 by mrony             #+#    #+#             */
-/*   Updated: 2022/11/18 14:32:37 by mrony            ###   ########.fr       */
+/*   Updated: 2022/11/18 17:44:15 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	ft_wordcount(char const *s, char c)
 {
 	unsigned int	trigger;
 	unsigned int	wordcount;
-	
+
 	wordcount = 0;
 	trigger = 0;
 	while (*s)
@@ -47,8 +47,8 @@ static char	**ft_malloc_error(char **split)
 static char	**ft_wordsize(char const *s, char c, char **split)
 {
 	unsigned int	wordcount;
-	size_t		wordlen;
-	
+	size_t			wordlen;
+
 	wordcount = 0;
 	while (*s)
 	{
@@ -101,7 +101,7 @@ static void	ft_wordcpy(char const *s, char c, char **split)
 char	**ft_split(char const *s, char c)
 {
 	unsigned int	wordcount;
-	char		**split;
+	char			**split;
 
 	wordcount = ft_wordcount(s, c);
 	split = malloc(sizeof(char **) * (wordcount + 1));
