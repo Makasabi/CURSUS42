@@ -6,7 +6,7 @@
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 13:59:19 by mrony             #+#    #+#             */
-/*   Updated: 2022/11/15 13:16:33 by mrony            ###   ########.fr       */
+/*   Updated: 2022/11/21 14:59:05 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,9 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	unsigned char	*array;
 	unsigned int	i;
-	size_t			test;
 
-	if (nmemb == 0 || size == 0)
+	if (size != 0 && nmemb > SIZE_MAX / size)
 		return (NULL);
-	test = nmemb * size;
-	if (nmemb != test / size)
-		return (0);
 	array = (unsigned char *)malloc(nmemb * size);
 	if (!array)
 		return (NULL);
