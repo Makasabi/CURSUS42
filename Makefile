@@ -6,7 +6,7 @@
 #    By: mrony <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 11:30:05 by mrony             #+#    #+#              #
-#    Updated: 2022/11/21 15:28:25 by mrony            ###   ########.fr        #
+#    Updated: 2022/11/21 19:16:19 by mrony            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,13 +45,17 @@ SRC =	ft_atoi.c \
 	ft_strtrim.c \
 	ft_substr.c \
 	ft_tolower.c \
-	ft_toupper.c \
+	ft_toupper.c 
+
+SRC_BONUS =	ft_lstnew.c 
 
 CC = clang
 
 CFLAGS = -Werror -Wextra -Wall
 
 OBJ = $(SRC:.c=.o)
+
+OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $^
@@ -62,9 +66,12 @@ $(NAME): $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
 
 all: $(NAME)
-	
+
+bonus: $(OBJ) $(OBJ_BONUS)
+	ar -rcs $(NAME) $(OBJ) $(OBJ_BONUS)
+
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(OBJ_BONUS)
 
 fclean: clean
 	rm -f $(NAME) ./a.out libft.h.gch
@@ -72,7 +79,10 @@ fclean: clean
 re: clean all
 
 test: $(NAME)
-	$(CC) $(CFLAGS)  main.c -L . -lft
+	$(CC) $(CFLAGS) main.c -L . -lft
+
+tbonus: $(NAME)
+	$(CC) $(CFLAGS) test_bonus.c -L . -lft 
 
 .PHONY:	all clean fclean re
 

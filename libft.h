@@ -6,7 +6,7 @@
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 12:18:55 by mrony             #+#    #+#             */
-/*   Updated: 2022/11/21 15:27:49 by mrony            ###   ########.fr       */
+/*   Updated: 2022/11/21 18:22:49 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
@@ -53,5 +53,14 @@ int		ft_tolower(int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 int		ft_atoi(const char *nptr);
+
+typedef	struct	s_list
+{
+	void 		*content;
+	struct s_list 	*next;
+} 			t_list;
+
+t_list  *ft_lstnew(void *content);
+
 
 #endif
