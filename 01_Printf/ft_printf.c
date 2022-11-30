@@ -6,7 +6,7 @@
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 14:41:19 by mrony             #+#    #+#             */
-/*   Updated: 2022/11/30 16:49:44 by mrony            ###   ########.fr       */
+/*   Updated: 2022/11/30 19:06:03 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static int	ft_conversion(char c, void *args)
 {
 	//%c
 	if (c == 'c')
+		
 		// imprimer le caractere c a l'ecran & retourner le nombre de caracteres imprimes (1)
 		return(ft_putchar_count(va_arg(args, int)));
 	//%s
