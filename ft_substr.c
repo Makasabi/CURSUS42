@@ -6,7 +6,7 @@
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:13:33 by mrony             #+#    #+#             */
-/*   Updated: 2022/11/15 17:55:25 by mrony            ###   ########.fr       */
+/*   Updated: 2022/11/28 11:41:21 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char			*new;
 
 	i = 0;
-	if (s[i] == '\0' || !s)
+	if (s == 0)
 		return (0);
 	newlen = ft_newlen(ft_strlen(s), start, len);
 	if (newlen == 0)

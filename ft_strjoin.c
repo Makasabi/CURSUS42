@@ -6,7 +6,7 @@
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:08:20 by mrony             #+#    #+#             */
-/*   Updated: 2022/11/15 18:50:49 by mrony            ###   ########.fr       */
+/*   Updated: 2022/11/28 11:43:34 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t			ls2;
 	char			*s3;
 
+	if (s1 == 0 || s2 == 0)
+		return (0);
 	ls1 = ft_strlen(s1);
 	ls2 = ft_strlen(s2);
 	s3 = malloc(ls1 + ls2 +1);
@@ -36,14 +38,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	s3[ls1] = '\0';
 	return (s3);
 }
-/*
-int	main(void)
-{
-	char 	s1[] = "Hello ";
-	char 	s2[] = "world";
-	char 	*s3;
-
-	s3 = ft_strjoin(s1, s2);
-	printf("%s\n", s3);
-	return (0);
-}*/

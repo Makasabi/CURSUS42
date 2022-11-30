@@ -6,7 +6,7 @@
 #    By: mrony <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 11:30:05 by mrony             #+#    #+#              #
-#    Updated: 2022/11/21 19:16:19 by mrony            ###   ########.fr        #
+#    Updated: 2022/11/30 11:12:01 by mrony            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,15 @@ SRC =	ft_atoi.c \
 	ft_tolower.c \
 	ft_toupper.c 
 
-SRC_BONUS =	ft_lstnew.c 
+SRC_BONUS =	ft_lstnew.c \
+		ft_lstadd_front.c \
+		ft_lstsize.c \
+		ft_lstlast.c \
+		ft_lstadd_back.c \
+		ft_lstdelone.c \
+		ft_lstclear.c \
+		ft_lstiter.c \
+		ft_lstmap.c
 
 CC = clang
 
@@ -70,13 +78,23 @@ all: $(NAME)
 bonus: $(OBJ) $(OBJ_BONUS)
 	ar -rcs $(NAME) $(OBJ) $(OBJ_BONUS)
 
+norme : 
+	norminette
+
+git: norme
+	git add .
+	git commit -m "push"
+	git push
+
 clean:
 	rm -f $(OBJ) $(OBJ_BONUS)
 
 fclean: clean
-	rm -f $(NAME) ./a.out libft.h.gch
+	rm -f $(NAME)
 
-re: clean all
+re: 
+	make clean
+	make all
 
 test: $(NAME)
 	$(CC) $(CFLAGS) main.c -L . -lft

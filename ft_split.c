@@ -6,7 +6,7 @@
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 10:33:03 by mrony             #+#    #+#             */
-/*   Updated: 2022/11/18 17:44:15 by mrony            ###   ########.fr       */
+/*   Updated: 2022/11/28 11:44:55 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ char	**ft_split(char const *s, char c)
 	unsigned int	wordcount;
 	char			**split;
 
+	if (s == 0)
+		return (0);
 	wordcount = ft_wordcount(s, c);
 	split = malloc(sizeof(char **) * (wordcount + 1));
 	if (!split)
@@ -114,37 +116,3 @@ char	**ft_split(char const *s, char c)
 	split[wordcount] = NULL;
 	return (split);
 }
-
-/*
-int	main(int ac, char **av)
-{
-	char		**str;
-	int		wordcount;
-	int		i;
-
-	i = 0;
-	if (ac != 3)
-	{
-		printf("Wrong argument count - please try again.\n");
-		return (0);
-	}
-	printf("\nft_split\n");
-	printf("orignal string: %s\n", av[1]);
-	printf("Delimiter character : '%c'\n", av[2][0]);
-	wordcount = ft_wordcount(av[1], av[2][0]);
-	printf("Wordcount: %d\n", wordcount);
-	str = ft_split(av[1], av[2][0]);
-	while (i <= wordcount)
-	{
-		printf("Tab[%d]: '%s'\n", i, str[i]);
-		i++;
-	}
-	i = 0;
-	while (i <= wordcount)
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
-	return (0);
-}*/

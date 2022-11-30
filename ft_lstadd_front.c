@@ -6,7 +6,7 @@
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:35:04 by mrony             #+#    #+#             */
-/*   Updated: 2022/11/21 19:15:01 by mrony            ###   ########.fr       */
+/*   Updated: 2022/11/23 11:30:39 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	new->next = lst->content;
-	lst->content = new;
+	if (lst && new)
+	{
+		new->next = *lst;
+		*lst = new;
+	}
 }

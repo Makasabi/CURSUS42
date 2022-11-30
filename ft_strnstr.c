@@ -6,7 +6,7 @@
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:58:44 by mrony             #+#    #+#             */
-/*   Updated: 2022/11/15 11:45:38 by mrony            ###   ########.fr       */
+/*   Updated: 2022/11/28 11:05:42 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	unsigned int	j;
 
 	i = 0;
-	if (little == NULL || *little == '\0')
+	if (*little == '\0')
 		return ((char *) big);
 	if (len < 1)
 		return (0);

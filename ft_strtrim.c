@@ -6,7 +6,7 @@
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 19:01:35 by mrony             #+#    #+#             */
-/*   Updated: 2022/11/16 14:49:08 by mrony            ###   ########.fr       */
+/*   Updated: 2022/11/28 11:44:26 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	i = 0;
 	j = 0;
+	if (s1 == 0 || set == 0)
+		return (0);
 	lstr = ft_strlen(s1)-(ft_charstotrim(s1, set));
 	str = malloc(sizeof(unsigned char) * (lstr + 1));
 	if (!str)
@@ -73,8 +75,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	str[j] = '\0';
 	return (str);
 }
-/*
-int	main(void)
-{
-	
-}*/
