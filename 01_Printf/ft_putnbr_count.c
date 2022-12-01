@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_putnbr_count.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 14:34:34 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/01 17:51:39 by mrony            ###   ########.fr       */
+/*   Created: 2022/12/01 11:53:29 by mrony             #+#    #+#             */
+/*   Updated: 2022/12/01 15:42:29 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libftprintf.h"
 
-//# include "libft/libft.h"
-# include <stdarg.h>
-# include <stdio.h>
-# include <unistd.h>
+void	ft_putnbr_count(int n, int *ptr_len)
+{
+	long int	nb;
 
-typedef int(*fp)();
-
-
-int ft_printf(const char *, ...);
-void	ft_putchar_count(char, int*);
-void	ft_putstr_count(char *, int*);
-void	ft_putnbr_count(int, int*);
-void	ft_putunsigned_count(unsigned int, int*);
-
-
-
-#endif
+	(void)ptr_len;
+	nb = n;
+	if (nb < 0)
+	{
+		ft_putchar_count('-', ptr_len);
+		nb = -nb;
+		ft_putnbr_count(nb, ptr_len);
+	}
+	else if (nb > 9)
+	{
+		ft_putnbr_count(nb / 10, ptr_len);
+		ft_putnbr_count(nb % 10, ptr_len);
+	}
+	else if (nb <= 9)
+		ft_putchar_count(nb + 48, ptr_len);
+}

@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 14:34:34 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/01 17:51:39 by mrony            ###   ########.fr       */
+/*   Created: 2022/12/01 10:51:23 by mrony             #+#    #+#             */
+/*   Updated: 2022/12/01 17:36:58 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libftprintf.h"
 
-//# include "libft/libft.h"
-# include <stdarg.h>
-# include <stdio.h>
-# include <unistd.h>
+void	ft_putchar_count(char c, int *ptr_len)
+{
+	write(1, &c, 1);
+	*ptr_len++;
+}
 
-typedef int(*fp)();
+void	ft_putstr_count(char *s, int *ptr_len)
+{
+	int	i;
 
-
-int ft_printf(const char *, ...);
-void	ft_putchar_count(char, int*);
-void	ft_putstr_count(char *, int*);
-void	ft_putnbr_count(int, int*);
-void	ft_putunsigned_count(unsigned int, int*);
-
-
-
-#endif
+	i = 0;
+	while (s[i])
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
+	*ptr_len += i;
+}

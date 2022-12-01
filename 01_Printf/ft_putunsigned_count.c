@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_putunsigned_count.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 14:34:34 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/01 17:51:39 by mrony            ###   ########.fr       */
+/*   Created: 2022/12/01 12:30:36 by mrony             #+#    #+#             */
+/*   Updated: 2022/12/01 15:12:16 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libftprintf.h"
 
-//# include "libft/libft.h"
-# include <stdarg.h>
-# include <stdio.h>
-# include <unistd.h>
-
-typedef int(*fp)();
-
-
-int ft_printf(const char *, ...);
-void	ft_putchar_count(char, int*);
-void	ft_putstr_count(char *, int*);
-void	ft_putnbr_count(int, int*);
-void	ft_putunsigned_count(unsigned int, int*);
-
-
-
-#endif
+void	ft_putunsigned_count(unsigned int n, int *ptr_len)
+{
+	if (n > 9)
+	{
+		ft_putunsigned_count(n / 10, ptr_len);
+		ft_putunsigned_count(n % 10, ptr_len);
+	}
+	else if (n <= 9)
+		ft_putchar_count(n + 48, ptr_len);
+}
