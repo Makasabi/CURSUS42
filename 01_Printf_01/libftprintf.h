@@ -5,38 +5,39 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 14:34:34 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/06 12:53:45 by mrony            ###   ########.fr       */
+/*   Created: 2022/12/06 10:44:54 by mrony             #+#    #+#             */
+/*   Updated: 2022/12/06 17:08:11 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFTPRINTF_H
+
 # define LIBFTPRINTF_H
 
-# include "libft/libft.h"
-# include <stdarg.h>
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
+# include <stdarg.h>
+# include <stdbool.h>
+# include "libft/libft.h"
 
+typedef struct ft_printf_arg_list{
+	int	i;
+	unsigned int ui;
+	char c;
+	char *str ;
+	void *ptr;
+}		arg_list;
 
-typedef struct s_data{
-	int			_int;
-	unsigned int _uns_int;
-	char		_char;
-	char		*_str;
-	void		*_ptr;
-}	t_data;
-
-typedef int(*fp)(int, t_data *);
+typedef int (*fp)(int, arg_list *data, va_list args);
 
 int ft_printf(const char *, ...);
-int	ft_putchar_count(int, t_data *);
-int	ft_putstr_count(int, t_data *);
-int	ft_putnbr_count(int, t_data *);
-int	ft_putunsigned_count(int, t_data *);
-void	ft_data_init(t_data *);
-int ft_conversion(va_list, char, t_data *);
-fp  ft_tab(int c, t_data *data);
+int ft_check(const char *str, int i);
+int ft_format(va_list args, char c);
+
+int c_format(int i, arg_list *data, va_list args);
+int s_format(int i, arg_list *data, va_list args);
+
+
 
 #endif

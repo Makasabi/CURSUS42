@@ -5,40 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 16:26:55 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/05 18:26:32 by mrony            ###   ########.fr       */
+/*   Created: 2022/12/06 10:50:24 by mrony             #+#    #+#             */
+/*   Updated: 2022/12/06 17:26:11 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_printf(const char *str, ...)
+int ft_printf(const char *toprint, ...)
 {
 	int	i;
-	int	len_printed;
+	int	res;
 	va_list	args;
-	t_data data;
-	
-	ft_data_init(&data);
 	i = 0;
-	len_printed = 0;
-	va_start(args, str);
-	while (str[i])
+	res = 0;
+	va_start(args, toprint);
+	while (toprint[i])
 	{
-		if (str[i] != '%')
+		if (toprint[i] != '%')
 		{
-			write(1, &str[i], 1);
-			len_printed++;
+			write(1, &toprint[i], 1);
 			i++;
+			res++;
 		}
-		if (str[i] == '%')
+		if (toprint[i] == '%')
 		{
-			i++;
-			len_printed += ft_conversion(args, str[i], &data);
-			i++;
+			if (ft_format(args, toprint[i + 1]) == 0)
+				i++;
+			else
+			{
+				res += ft_format(args, toprint[i + 1]);
+				i += 2;
+			}
 		}
 	}
 	va_end(args);
-//	free(&data);
-	return (len_printed);
+	return (res);
 }

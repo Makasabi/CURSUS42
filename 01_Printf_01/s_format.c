@@ -1,44 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   s_format.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 16:26:55 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/05 18:26:32 by mrony            ###   ########.fr       */
+/*   Created: 2022/12/06 15:59:19 by mrony             #+#    #+#             */
+/*   Updated: 2022/12/06 16:44:49 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_printf(const char *str, ...)
+int	s_format(int i, arg_list *data, va_list args)
 {
-	int	i;
-	int	len_printed;
-	va_list	args;
-	t_data data;
+	(void)i;
+	int index;
 	
-	ft_data_init(&data);
-	i = 0;
-	len_printed = 0;
-	va_start(args, str);
-	while (str[i])
+	index = 0;
+	data->str = ft_strdup(va_arg(args, char*));
+	if (!(data->str))
+		return (0);
+	while (data->str[index])
 	{
-		if (str[i] != '%')
-		{
-			write(1, &str[i], 1);
-			len_printed++;
-			i++;
-		}
-		if (str[i] == '%')
-		{
-			i++;
-			len_printed += ft_conversion(args, str[i], &data);
-			i++;
-		}
+		write(1, &data->str[index], 1);
+		index++;
 	}
-	va_end(args);
-//	free(&data);
-	return (len_printed);
+	free(data->str);
+	return (index);
 }

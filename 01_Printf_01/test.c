@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/01 10:51:23 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/05 16:52:34 by mrony            ###   ########.fr       */
+/*   Created: 2022/12/06 12:07:23 by mrony             #+#    #+#             */
+/*   Updated: 2022/12/06 12:39:13 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdarg.h>
+#include "test.h"
 
-int	ft_putchar_count(t_data data)
+void ft_data_init(arg_list *data)
 {
-	write(1, &data->_char, 1);
-	return (1);
+	data->i = 0;
+	data->ui = 0;
+	data->c = '0';
+	data->str = "";
+	data->ptr = &data->i;
+	
 }
 
-int	ft_putstr_count(t_data data)
+int	main()
 {
-	int	i;
+	va_list	args;
+	arg_list	data_ptr;
+	ft_data_init(&data_ptr);
 
-	i = 0;
-	while (data->_str[i])
-	{
-		write(1, &data->_str[i], 1);
-		i++;
-	}
-	return (i);
+	printf("%c\n", data_ptr.c);
 }

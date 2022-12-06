@@ -1,44 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_format.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 16:26:55 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/05 18:26:32 by mrony            ###   ########.fr       */
+/*   Created: 2022/12/05 15:57:22 by mrony             #+#    #+#             */
+/*   Updated: 2022/12/06 12:55:11 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_printf(const char *str, ...)
+fp	ft_tab(int c, t_data *data)
 {
-	int	i;
-	int	len_printed;
-	va_list	args;
-	t_data data;
-	
-	ft_data_init(&data);
-	i = 0;
-	len_printed = 0;
-	va_start(args, str);
-	while (str[i])
-	{
-		if (str[i] != '%')
-		{
-			write(1, &str[i], 1);
-			len_printed++;
-			i++;
-		}
-		if (str[i] == '%')
-		{
-			i++;
-			len_printed += ft_conversion(args, str[i], &data);
-			i++;
-		}
-	}
-	va_end(args);
-//	free(&data);
-	return (len_printed);
+	(void)data;
+	fp	*format_tab;
+
+	format_tab = (fp[128]){
+		(void *)0,
+	['c'] = ft_putchar_count,
+	['s'] = ft_putstr_count,
+	['d'] = ft_putnbr_count,
+//	['u'] = ,
+//	['i'] = ,
+//	['p'] = ,
+//	['x'] = ,
+//	['X'] = ,
+//	['%'] = ,
+	};
+	return (format_tab[c]);
 }

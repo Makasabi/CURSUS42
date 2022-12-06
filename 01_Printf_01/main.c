@@ -1,44 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 16:26:55 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/05 18:26:32 by mrony            ###   ########.fr       */
+/*   Created: 2022/12/06 10:51:44 by mrony             #+#    #+#             */
+/*   Updated: 2022/12/06 17:26:56 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_printf(const char *str, ...)
+int	main()
 {
-	int	i;
-	int	len_printed;
-	va_list	args;
-	t_data data;
-	
-	ft_data_init(&data);
+	int i = 0;
+	char c = 'c';
+	char *str = "Hello world";
+
+	ft_printf("ft_printf\n");
+	i += ft_printf("This is a char: %c\n %a", c);
+//	i += ft_printf("This is a string: %s\n", str);
+//	ft_printf("lenght printed: %d\n", i);
+
 	i = 0;
-	len_printed = 0;
-	va_start(args, str);
-	while (str[i])
-	{
-		if (str[i] != '%')
-		{
-			write(1, &str[i], 1);
-			len_printed++;
-			i++;
-		}
-		if (str[i] == '%')
-		{
-			i++;
-			len_printed += ft_conversion(args, str[i], &data);
-			i++;
-		}
-	}
-	va_end(args);
-//	free(&data);
-	return (len_printed);
+	printf("printf\n");
+	i = printf("This is a char: %@\n");
+	i = printf("This is a string: %s\n", str);
+//	printf("lenght printed: %d\n", i);
+	return 0;
 }
