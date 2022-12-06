@@ -6,7 +6,7 @@
 #    By: mrony <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/06 10:52:14 by mrony             #+#    #+#              #
-#    Updated: 2022/12/06 17:25:00 by mrony            ###   ########.fr        #
+#    Updated: 2022/12/06 18:30:51 by mrony            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,12 @@ NAME = libftprintf.a
 SRC = 	ft_printf.c \
 		ft_format.c \
 		c_format.c \
-		s_format.c
+		s_format.c \
+		di_format.c
 
 CC = clang
 
-#CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 OBJ = $(SRC:.c=.o)
 
@@ -52,6 +53,6 @@ re:
 	make all
 
 test: $(NAME)
-	$(CC) $(CFLAGS) main.c -L . -lftprintf -L ./libft/ -lft
+	$(CC) $(CFLAGS) -g main.c -L . -lftprintf -L ./libft/ -lft
 
 .PHONY: all clean fclean re

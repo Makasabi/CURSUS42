@@ -6,7 +6,7 @@
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:15:44 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/06 17:26:38 by mrony            ###   ########.fr       */
+/*   Updated: 2022/12/06 20:01:02 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ static fp	ft_idformat(int i, arg_list *data, va_list args)
 	['c'] = c_format, 
 	['s'] = s_format,
 //	['p'] = p_format,
-//	['d'] = di_format,
-//	['i'] = di_format,
+	['d'] = di_format,
+	['i'] = di_format,
 //	['u'] = u_format,
 //	['x'] = x_format,
 //	['X'] = X_format,

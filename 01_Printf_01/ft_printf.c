@@ -6,11 +6,26 @@
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 10:50:24 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/06 17:26:11 by mrony            ###   ########.fr       */
+/*   Updated: 2022/12/06 19:46:05 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+static int	ft_ischarset(char c)
+{
+	int	i;
+	char *charset = "cspdiuxX%";
+	
+	i = 0;
+	while (charset[i])
+	{
+		if (c == charset[i])
+			return(1);
+		i++;
+	}
+	return(0);
+}
 
 int ft_printf(const char *toprint, ...)
 {
@@ -30,13 +45,13 @@ int ft_printf(const char *toprint, ...)
 		}
 		if (toprint[i] == '%')
 		{
-			if (ft_format(args, toprint[i + 1]) == 0)
-				i++;
-			else
+			if (ft_ischarset(toprint[i + 1]) == 1)
 			{
 				res += ft_format(args, toprint[i + 1]);
 				i += 2;
 			}
+			else
+				i++;
 		}
 	}
 	va_end(args);

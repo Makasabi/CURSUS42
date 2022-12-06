@@ -1,20 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   di_format.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 12:07:23 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/06 19:40:45 by mrony            ###   ########.fr       */
+/*   Created: 2022/12/06 17:52:19 by mrony             #+#    #+#             */
+/*   Updated: 2022/12/06 19:56:25 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdarg.h>
-//#include "test.h"
+#include "libftprintf.h"
 
 static void	ft_putchar_count(char c, int *res)
 {
@@ -41,7 +37,7 @@ static void	ft_putnbr_count(int n, int *res)
 	else if (nb <= 9)
 		ft_putchar_count(nb + 48, res);
 }
-/*
+
 int di_format(int i, arg_list *data, va_list args)
 {
 	int	res;
@@ -49,18 +45,8 @@ int di_format(int i, arg_list *data, va_list args)
 
 	res = 0;
 	data->i = va_arg(args, int);
+	printf("di_format data->i: %d\n", data->i);
 	ft_putnbr_count(data->i, &res);
+	printf("di_format res: %d\n", res);
 	return (res);
-}
-*/
-int	main()
-{
-	int res;
-	int nb;
-
-	res = 0;
-	nb = 123456;
-	ft_putnbr_count(nb, &res);
-	printf("\nlen printed: %d\n", res);
-	return (0);
 }

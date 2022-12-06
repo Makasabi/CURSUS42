@@ -6,7 +6,7 @@
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 10:44:54 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/06 17:08:11 by mrony            ###   ########.fr       */
+/*   Updated: 2022/12/06 20:01:06 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ typedef struct ft_printf_arg_list{
 typedef int (*fp)(int, arg_list *data, va_list args);
 
 int ft_printf(const char *, ...);
-int ft_check(const char *str, int i);
 int ft_format(va_list args, char c);
 
 int c_format(int i, arg_list *data, va_list args);
 int s_format(int i, arg_list *data, va_list args);
+int di_format(int i, arg_list *data, va_list args);
 
 
 
