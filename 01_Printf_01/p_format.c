@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   di_format.c                                        :+:      :+:    :+:   */
+/*   p_format.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 17:52:19 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/07 18:15:31 by mrony            ###   ########.fr       */
+/*   Created: 2022/12/07 19:04:36 by mrony             #+#    #+#             */
+/*   Updated: 2022/12/07 19:29:57 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int di_format(int i, arg_list *data, va_list args)
+static void ft_putptr_hexa(long long unsigned int nbr, char *base, int *count)
 {
-	char *str;
-	int	res;
-	(void)i;
+	if(nbr / 16)
+		ft_putptr_hexa(nbr / 16, base, count);
+	ft_putchar_count(base[nbr % 16], count);
+}
 
-	data->i = va_arg(args, int);
-	str = ft_itoa(data->i);
-	if (!str)
-		return(0);
-	res = ft_putstr_count(str);
-	free(str);
+int	p_format(int i, arg_list *data, va_list args)
+{
+	(void)i;
+	int	res;
+	long long unsigned int	adr;
+	
+	data->ptr = va_arg(args, void *);
+	adr = (long long unsigned int)data->ptr;
+	res = 0;
+	res += ft_putstr_count("0x");
+	ft_putptr_hexa(adr, "0123456789abcdef", &res);
 	return (res);
 }

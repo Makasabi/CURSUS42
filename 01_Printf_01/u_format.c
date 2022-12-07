@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   di_format.c                                        :+:      :+:    :+:   */
+/*   u_format.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 17:52:19 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/07 18:15:31 by mrony            ###   ########.fr       */
+/*   Created: 2022/12/07 10:39:40 by mrony             #+#    #+#             */
+/*   Updated: 2022/12/07 18:15:27 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int di_format(int i, arg_list *data, va_list args)
+int u_format(int i, arg_list *data, va_list args)
 {
 	char *str;
 	int	res;
 	(void)i;
 
-	data->i = va_arg(args, int);
-	str = ft_itoa(data->i);
+	data->ui = (va_arg(args, int));
+	str = ft_utoa(data->ui);
 	if (!str)
 		return(0);
 	res = ft_putstr_count(str);

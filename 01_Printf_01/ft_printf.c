@@ -6,7 +6,7 @@
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 10:50:24 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/06 19:46:05 by mrony            ###   ########.fr       */
+/*   Updated: 2022/12/07 18:56:49 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,17 @@ static int	ft_ischarset(char c)
 	return(0);
 }
 
+static void ft_modulo(int *i, const char *toprint, va_list args, int *res)
+{
+	if (ft_ischarset(toprint[*i + 1]) == 1)
+	{
+		*res += ft_format(args, toprint[*i + 1]);
+		*i += 2;
+	}
+	else 
+		*i += 1;
+}
+
 int ft_printf(const char *toprint, ...)
 {
 	int	i;
@@ -44,15 +55,7 @@ int ft_printf(const char *toprint, ...)
 			res++;
 		}
 		if (toprint[i] == '%')
-		{
-			if (ft_ischarset(toprint[i + 1]) == 1)
-			{
-				res += ft_format(args, toprint[i + 1]);
-				i += 2;
-			}
-			else
-				i++;
-		}
+			ft_modulo(&i, toprint, args, &res);
 	}
 	va_end(args);
 	return (res);

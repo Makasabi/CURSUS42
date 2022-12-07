@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   di_format.c                                        :+:      :+:    :+:   */
+/*   x_format.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 17:52:19 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/07 18:15:31 by mrony            ###   ########.fr       */
+/*   Created: 2022/12/07 18:26:43 by mrony             #+#    #+#             */
+/*   Updated: 2022/12/07 18:26:51 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int di_format(int i, arg_list *data, va_list args)
+int x_format(int i, arg_list *data, va_list args)
 {
-	char *str;
-	int	res;
 	(void)i;
+	(void)args;
+	char *base = "0123456789abcdef";
+	int	res;
 
-	data->i = va_arg(args, int);
-	str = ft_itoa(data->i);
-	if (!str)
-		return(0);
-	res = ft_putstr_count(str);
-	free(str);
+	res = 0;
+	data->ui = va_arg(args, unsigned int);
+	ft_putnbr_hexa(data->ui, base, &res);
 	return (res);
 }
