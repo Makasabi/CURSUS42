@@ -6,7 +6,7 @@
 #    By: mrony <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 11:30:05 by mrony             #+#    #+#              #
-#    Updated: 2022/12/07 18:37:56 by mrony            ###   ########.fr        #
+#    Updated: 2022/11/30 14:52:47 by mrony            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ SRC =	ft_atoi.c \
 	ft_strtrim.c \
 	ft_substr.c \
 	ft_tolower.c \
-	ft_toupper.c \
+	ft_toupper.c 
 
 SRC_BONUS =	ft_lstnew.c \
 		ft_lstadd_front.c \
@@ -103,4 +103,3 @@ tbonus: $(NAME)
 	$(CC) $(CFLAGS) test_bonus.c -L . -lft 
 
 .PHONY:	all clean fclean re
-
