@@ -6,19 +6,20 @@
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 18:26:43 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/07 18:26:51 by mrony            ###   ########.fr       */
+/*   Updated: 2022/12/08 11:15:56 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int x_format(int i, arg_list *data, va_list args)
+int	x_format(int i, t_data *data, va_list args)
 {
+	char	*base;
+	int		res;
+
 	(void)i;
 	(void)args;
-	char *base = "0123456789abcdef";
-	int	res;
-
+	base = "0123456789abcdef";
 	res = 0;
 	data->ui = va_arg(args, unsigned int);
 	ft_putnbr_hexa(data->ui, base, &res);

@@ -6,13 +6,13 @@
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:15:44 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/07 19:19:34 by mrony            ###   ########.fr       */
+/*   Updated: 2022/12/08 11:20:34 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static void ft_data_init(arg_list *data)
+static void	ft_data_init(t_data *data)
 {
 	data->i = 0;
 	data->ui = 0;
@@ -21,22 +21,22 @@ static void ft_data_init(arg_list *data)
 	data->ptr = NULL;
 }
 
-static fp	ft_idformat(int i, arg_list *data, va_list args)
+static t_fp	ft_idformat(int i, t_data *data, va_list args)
 {
+	t_fp	*fp_tab;
+
 	(void)data;
 	(void)args;
-	fp	*fp_tab;
-
-	fp_tab = (fp[128]){
+	fp_tab = (t_fp[128]){
 		(void *)0,
-	['c'] = c_format, 
+	['c'] = c_format,
 	['s'] = s_format,
 	['p'] = p_format,
 	['d'] = di_format,
 	['i'] = di_format,
 	['u'] = u_format,
 	['x'] = x_format,
-	['X'] = X_format,
+	['X'] = xx_format,
 	['%'] = mod_format,
 	};
 	return (fp_tab[i]);
@@ -44,10 +44,10 @@ static fp	ft_idformat(int i, arg_list *data, va_list args)
 
 int	ft_format(va_list args, char c)
 {
-	fp	format;
-	arg_list data;
-	ft_data_init(&data);
+	t_fp	format;
+	t_data	data;
 
+	ft_data_init(&data);
 	format = ft_idformat(c, &data, args);
 	if (format == NULL)
 		return (0);

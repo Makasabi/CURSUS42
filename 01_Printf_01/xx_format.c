@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   X_format.c                                         :+:      :+:    :+:   */
+/*   xx_format.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 18:27:28 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/07 18:27:40 by mrony            ###   ########.fr       */
+/*   Created: 2022/12/08 11:21:38 by mrony             #+#    #+#             */
+/*   Updated: 2022/12/08 11:22:09 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int X_format(int i, arg_list *data, va_list args)
+int	xx_format(int i, t_data *data, va_list args)
 {
+	char	*base;
+	int		res;
+
 	(void)i;
 	(void)args;
-	char *base = "0123456789ABCDEF";
-	int	res;
-
+	base = "0123456789ABCDEF";
 	res = 0;
 	data->ui = va_arg(args, unsigned int);
 	ft_putnbr_hexa(data->ui, base, &res);

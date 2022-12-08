@@ -6,7 +6,7 @@
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 10:50:24 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/07 18:56:49 by mrony            ###   ########.fr       */
+/*   Updated: 2022/12/08 11:12:28 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,37 @@
 
 static int	ft_ischarset(char c)
 {
-	int	i;
-	char *charset = "cspdiuxX%";
-	
+	int		i;
+	char	*charset;
+
 	i = 0;
+	charset = "cspdiuxX%";
 	while (charset[i])
 	{
 		if (c == charset[i])
-			return(1);
+			return (1);
 		i++;
 	}
-	return(0);
+	return (0);
 }
 
-static void ft_modulo(int *i, const char *toprint, va_list args, int *res)
+static void	ft_modulo(int *i, const char *toprint, va_list args, int *res)
 {
 	if (ft_ischarset(toprint[*i + 1]) == 1)
 	{
 		*res += ft_format(args, toprint[*i + 1]);
 		*i += 2;
 	}
-	else 
+	else
 		*i += 1;
 }
 
-int ft_printf(const char *toprint, ...)
+int	ft_printf(const char *toprint, ...)
 {
-	int	i;
-	int	res;
+	int		i;
+	int		res;
 	va_list	args;
+
 	i = 0;
 	res = 0;
 	va_start(args, toprint);
