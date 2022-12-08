@@ -6,7 +6,7 @@
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 10:51:44 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/08 16:18:05 by mrony            ###   ########.fr       */
+/*   Updated: 2022/12/08 17:36:56 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main()
 	i += ft_printf("This is a modulo: %%\n");
 	i += ft_printf("this is -789464 in lowercase hexadecimal: %x\n", v);
 	i += ft_printf("this is -789464 in uppercase hexadecimal: %X\n", v);
-	i += ft_printf("This is a pointer address : %p\n", &j);
+	i += ft_printf("This is a pointer address : %p\n %d\n %c\n %s\n", &j, j, c, str);
 	ft_printf("length printed: %i\n", i);
 
 	
@@ -45,7 +45,10 @@ int	main()
 	i += printf("This is a modulo: %%\n");
 	i += printf("this is -789464 in lowercase hexadecimal: %x\n", v);
 	i += printf("this is -789464 in uppercase hexadecimal: %X\n", v);
-	i += printf("This is a pointer address : %p\n", &j);
+	i += printf("This is a pointer address : %p\n %d\n %c\n %s\n", &j, j, c, str);
 	printf("length printed: %i\n", i);
 	return 0;
 }
+
+// 64 test: $(NAME)
+//	$(CC) $(CFLAGS) -g main.c -L . -lftprintf -L ./libft/ -lft
