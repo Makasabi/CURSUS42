@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/09 15:43:57 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/13 12:48:31 by mrony            ###   ########.fr       */
+/*   Created: 2022/12/13 14:51:27 by mrony             #+#    #+#             */
+/*   Updated: 2022/12/13 17:26:57 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,20 @@
 
 int	main()
 {
-	int 	fd;
-	char	*line;
+	int fd;
+	char *line;
 
+	fd = 0;
 	fd = open("Lorem_Ipsum.txt", O_RDONLY);
 	if (fd == -1)
 		printf("error opening file\n");
-//	while (1)
-//	{
+	while (!(fd < 0))
+	{
 		line = get_next_line(fd);
-//		if (line == NULL)
-//			break;
-//		printf("%s\n", line);
+		if(line == NULL)
+			break;
+		printf("%s\n", line);
 		free(line);
-//	}
-	return (1);
+	}
+	return (0);
 }

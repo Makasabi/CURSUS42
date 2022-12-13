@@ -18,12 +18,12 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 # ifndef BUFFER_SIZE
-
 # define BUFFER_SIZE 42
-
-#endif
+# endif
 
 typedef struct s_gnl_list
 {
@@ -31,6 +31,9 @@ typedef struct s_gnl_list
 	struct	s_gnl_list	*next;
 }						t_gnl_list;
 
-char	*get_next_line(int fd);
+char		*get_next_line(int fd);
+t_gnl_list  *ft_lstnew(void *content);
+char    *ft_strdup(const char *s, int size);
+void    ft_lstadd_back(t_list **lst, t_list *new);
 
 #endif

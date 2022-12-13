@@ -5,36 +5,50 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 15:11:16 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/13 13:52:26 by mrony            ###   ########.fr       */
+/*   Created: 2022/12/13 15:20:08 by mrony             #+#    #+#             */
+/*   Updated: 2022/12/13 16:57:50 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-t_gnl_list	*ft_lstnew(void *content)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	t_gnl_list	*node;
+	unsigned int	i;
+	size_t			ls1;
+	size_t			ls2;
+	char			*s3;
 
-	node = malloc(sizeof(t_gnl_list));
-	if (node)
+	if (s1 == 0 || s2 == 0)
+		return (0);
+	ls1 = ft_strlen(s1);
+	ls2 = ft_strlen(s2);
+	s3 = malloc(ls1 + ls2 +1);
+	if (!s3)
+		return (NULL);
+	i = -1;
+	while (s1[++i])
+		s3[i] = s1[i];
+	i = -1;
+	while (s2[++i])
 	{
-		node->str = content;
-		node->next = NULL;
+		s3[ls1] = s2[i];
+		ls1++;
 	}
-	return (node);
+	s3[ls1] = '\0';
+	return (s3);
 }
 
-char	*ft_strdup(const char *s, int size)
+char	*ft_strdup(const char *s, int j)
 {
 	char	*str;
 	int		i;
 
-	str = malloc(sizeof(char) * (size + 1));
+	str = malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (!str)
 		return (NULL);
 	i = 0;
-	while (s[i] != '\0' && i < size)
+	while (s[i] != '\0' && i < j)
 	{
 		str[i] = s[i];
 		i++;
@@ -43,20 +57,13 @@ char	*ft_strdup(const char *s, int size)
 	return (str);
 }
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+size_t	ft_strlen(const char *s)
 {
-	t_list	*tmp;
+	size_t	i;
 
-	if (lst && new)
-	{
-		if (*lst == NULL)
-			*lst = new;
-		else
-		{
-			tmp = ft_lstlast(*lst);
-			tmp->next = new;
-		}
-	}
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
-
 
