@@ -6,59 +6,89 @@
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 14:50:46 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/13 18:14:57 by mrony            ###   ########.fr       */
+/*   Updated: 2022/12/14 18:28:00 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-
-char	*new_line(char **str)
+char	*new_line(char *str)
 {
-	unsigned int	i;
-	char			*tmp;
-	char			*line;
+	char	*line;
+	int		i;
+
+	i = 0;
+	while (str[i] != '\n')
+			i++;
+	line = ft_strdup(str, i + 1);
+	return (line);
+}
+
+char	*rest_of_str(char *str)
+{
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	while (str[i] != '\n')
+		i++;
+	tmp = ft_strdup((str + i + 1), (ft_strlen(str) - i));
+	free(str);
+	return (tmp);
+}
+
+int	check_new_line(char *str)
+{
+	int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		if (*str[i] == '\n')
-		{
-			line = ft_strdup(*str, i + 1);
-			tmp = ft_str((*str + i + 1), (ft_strlen(*str) - i + 1));
-			*str = tmp;
-			break;
-		}
+		if (str[i] == '\n')
+			return (1);
 		i++;
 	}
-	return (line);
-} 
+	return (0);
+}
+
+char	*buff_to_str(char *buff, char *str)
+{
+	char	*result;
+
+	if (!str)
+		result = ft_strdup(buff, BUFFER_SIZE);
+	else
+		result = ft_strjoin(str, buff);
+	free(str);
+	return (result);
+}
 
 char	*get_next_line(int fd)
 {
 	static char	*str;
 	char 		buff[BUFFER_SIZE +1];
 	int			read_fd;
-	char 		*line_read;
+	char		*line_read;
 
+	read_fd = 1;
 	if (fd < 0 || BUFFER_SIZE == 0)
 		return (NULL);
-	if ((read_fd = read(fd, buff, BUFFER_SIZE)) > 0)
+	while (read_fd > 0)
 	{
-		buff[BUFFER_SIZE] = '\0';
-		if (!str)
-			str = ft_strdup(buff, BUFFER_SIZE + 1);
-		else
-			str = ft_strjoin(str, buff);
-		if (!str)
-			return (NULL);
+		if (!str || check_new_line(str) == 0)
+		{
+			read_fd = read(fd, buff, BUFFER_SIZE);
+			if (read_fd <= 0)
+				return (NULL);
+			buff[BUFFER_SIZE] = '\0';
+			str = buff_to_str(buff, str);
+		}
+		if (check_new_line(str) == 1 || read_fd < BUFFER_SIZE)
+		{
+			line_read = new_line(str);
+			str = rest_of_str(str);
+			read_fd = 0;
+		}
 	}
-	line_read = new_line(&str);	
-
 	return (line_read);
-	
-	//4// Si oui, copier le contenu du debut du buffer jusqu'a la fin de la ligne dans une ligne a renvoyer au main.
-	//4 bis// Si non, je relance la lecture et j'ajoute la nouvelle portion a la suite du buffer temporaire.
-	//5// le buffer doit garder ce qu'il n'a pas envoye' dans l nouvelle ligne.
-
 }

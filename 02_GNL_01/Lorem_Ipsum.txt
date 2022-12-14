@@ -2,36 +2,5 @@ Lorem Ipsum
 
 "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
 
-"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Nullam id mi quis enim consectetur imperdiet eget luctus mauris. Aliquam ut felis et leo vulputate pulvinar at in leo. Vivamus sagittis orci lorem, quis pulvinar orci posuere eget. 
-Ut est lacus, congue bibendum condimentum in, dapibus nec nulla.
-Vivamus nec ipsum a tellus viverra vehicula vitae non dolor. Quisque semper mauris et iaculis mollis. 
-Etiam ante risus, gravida eu tincidunt mollis, volutpat in nulla. 
-Curabitur sed pretium sem. 
-Vivamus finibus nunc in mi efficitur, et pulvinar ante hendrerit. Maecenas sed nisl et libero ullamcorper condimentum id at augue. Pellentesque ut tortor augue. 
-Ut non dui pretium, pulvinar felis et, fringilla risus. Mauris eu metus vel urna lobortis scelerisque. 
-Nullam consectetur, metus eget laoreet ultricies, nulla nunc posuere nisl, non porta tortor tortor vitae turpis.
-
-Nullam fringilla eros elit, quis posuere erat pulvinar ac. 
-Maecenas erat elit, viverra eu orci id, maximus ultrices lectus. 
-
-Aenean commodo nisi tempor ligula tristique dapibus. Nulla vel velit nec elit condimentum ornare. 
-Vestibulum facilisis ex ac mi lacinia, sit amet pulvinar augue vehicula. 
-Vivamus maximus maximus laoreet. Donec cursus non sapien malesuada accumsan. 
-
-In bibendum libero ut elementum maximus. Maecenas cursus orci sed tortor consequat dictum. Vivamus consequat justo eu urna faucibus, non porta erat interdum.
-
-Fusce mi mauris, mollis non diam ac, tincidunt venenatis orci. Sed a lobortis diam. Vivamus euismod vitae tortor eu hendrerit. Vestibulum tempor dui eget odio posuere, at pellentesque diam egestas. 
-Quisque vitae ex in dui euismod maximus. Proin in posuere turpis. Donec pretium varius dolor. Mauris rutrum ultrices blandit. Maecenas id dapibus turpis, nec interdum mi. Nullam tristique porta purus, ut viverra dolor iaculis ut.
-
-Pellentesque volutpat vitae magna sit amet cursus. Ut consequat justo vel tincidunt tristique. Morbi congue augue in magna sodales, non malesuada dui pellentesque. 
-
-Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed sit amet magna lectus. 
-
-Aliquam euismod accumsan eros, ac maximus erat sollicitudin ut. Fusce sit amet lorem vel lorem ultricies dictum in id urna. 
-Vestibulum suscipit posuere odio, in dictum purus elementum eget. 
-
 Ut magna mi, posuere et efficitur nec, lobortis nec erat. 
 Morbi interdum rutrum odio vel aliquet.

@@ -6,11 +6,11 @@
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 14:51:27 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/13 17:26:57 by mrony            ###   ########.fr       */
+/*   Updated: 2022/12/14 18:27:09 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../get_next_line.h"
 
 int	main()
 {
@@ -21,12 +21,12 @@ int	main()
 	fd = open("Lorem_Ipsum.txt", O_RDONLY);
 	if (fd == -1)
 		printf("error opening file\n");
-	while (!(fd < 0))
+	while (fd >= 0)
 	{
 		line = get_next_line(fd);
 		if(line == NULL)
 			break;
-		printf("%s\n", line);
+		printf("%s", line);
 		free(line);
 	}
 	return (0);
