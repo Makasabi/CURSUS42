@@ -6,7 +6,7 @@
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 14:50:46 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/14 18:28:00 by mrony            ###   ########.fr       */
+/*   Updated: 2022/12/14 18:59:37 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*rest_of_str(char *str)
 	return (tmp);
 }
 
-int	check_new_line(char *str)
+int	check_nl(char *str)
 {
 	int	i;
 
@@ -66,7 +66,7 @@ char	*buff_to_str(char *buff, char *str)
 char	*get_next_line(int fd)
 {
 	static char	*str;
-	char 		buff[BUFFER_SIZE +1];
+	char 		*buff;
 	int			read_fd;
 	char		*line_read;
 
@@ -75,15 +75,19 @@ char	*get_next_line(int fd)
 		return (NULL);
 	while (read_fd > 0)
 	{
-		if (!str || check_new_line(str) == 0)
+		if (!str || check_nl(str) == 0)
 		{
+			buff = malloc(sizeof(char) * BUFFER_SIZE + 1);
+			if (!buff)
+				return(NULL);
 			read_fd = read(fd, buff, BUFFER_SIZE);
 			if (read_fd <= 0)
 				return (NULL);
 			buff[BUFFER_SIZE] = '\0';
 			str = buff_to_str(buff, str);
+			free(buff);
 		}
-		if (check_new_line(str) == 1 || read_fd < BUFFER_SIZE)
+		if (check_nl(str) == 1 || (check_nl(str) == 0 && read_fd < BUFFER_SIZE))
 		{
 			line_read = new_line(str);
 			str = rest_of_str(str);

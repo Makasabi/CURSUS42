@@ -6,7 +6,7 @@
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 14:51:27 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/14 18:27:09 by mrony            ###   ########.fr       */
+/*   Updated: 2022/12/14 18:57:00 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main()
 	char *line;
 
 	fd = 0;
-	fd = open("Lorem_Ipsum.txt", O_RDONLY);
+	fd = open("41_no_nl", O_RDONLY);
 	if (fd == -1)
 		printf("error opening file\n");
 	while (fd >= 0)
