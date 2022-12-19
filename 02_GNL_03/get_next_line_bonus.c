@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 18:44:07 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/19 23:35:44 by mrony            ###   ########.fr       */
+/*   Updated: 2022/12/20 00:11:15 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,14 @@ char	*dump_clean(char *dump)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*dump;
+	static char	*dump[1024];
 
-	if (BUFFER_SIZE <= 0 || fd < 0)
+	if (BUFFER_SIZE <= 0 || fd < 0 || fd > 1024)
 		return (NULL);
-	dump = read_and_copy(dump, fd);
-	if (!dump)
-		return (free(dump), NULL);
-	line = dump_to_line(dump);
-	dump = dump_clean(dump);
+	dump[fd] = read_and_copy(dump[fd], fd);
+	if (!dump[fd])
+		return (free(dump[fd]), NULL);
+	line = dump_to_line(dump[fd]);
+	dump[fd] = dump_clean(dump[fd]);
 	return (line);
 }
