@@ -1,39 +1,33 @@
 /* ************************************************************************** */
-
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/09 15:31:49 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/09 15:37:17 by mrony            ###   ########.fr       */
+/*   Created: 2022/12/19 12:06:51 by mrony             #+#    #+#             */
+/*   Updated: 2022/12/19 23:11:15 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE
+#ifndef GET_NEXT_LINE_H
 
-# define GET_NEXT_LINE
-
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+# define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 42
+#  define BUFFER_SIZE 42
 # endif
 
-typedef struct s_gnl_list
-{
-	char				*str;
-	struct	s_gnl_list	*next;
-}						t_gnl_list;
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-char		*get_next_line(int fd);
-t_gnl_list  *ft_lstnew(void *content);
-char    *ft_strdup(const char *s, int size);
-void    ft_lstadd_back(t_list **lst, t_list *new);
+char	*get_next_line(int fd);
+char    *ft_strchr(const char *s, int c);
+void    *ft_memmove(void *dest, const void *src, size_t n);
+char    *ft_strjoin(char *s1, char *s2);
+unsigned int		ft_strlen(char *str);
 
 #endif
