@@ -6,7 +6,7 @@
 /*   By: mrony <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 18:44:07 by mrony             #+#    #+#             */
-/*   Updated: 2022/12/20 00:11:15 by mrony            ###   ########.fr       */
+/*   Updated: 2022/12/20 00:34:29 by mrony            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ char	*read_and_copy(char *dump, int fd)
 		}
 		buff[read_fd] = '\0';
 		dump = ft_strjoin(dump, buff);
+		if (!dump)
+			return (NULL);
 	}
 	free(buff);
 	return (dump);
